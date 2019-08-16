@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Detail</title>
+		<link rel="stylesheet" type="text/css" href="/css/custom.css" />
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<h1>Shopping Catalog</h1>
+	            {% if is_authenticated %}
+					<a class="login_button" href="{{ url_for('logout') }}">Logout</a>
+				{% else %}
+					<a class="login_button" href="{{ url_for('login') }}">Login</a>
+				{% endif %}
+            </header>
+			<div class="main">
+				<div class="card">
+					<div class="card-header"><h1>{{ element.title }}</h1></div>
+					<div class="card-body">
+						<h5 style="color: #4190e3">Description: {{ element.description }}</h5>
+					</div>
+					<br>
+					{% if is_authorized %}
+                    	<div class="card-footer" id="links">
+							<a href="{{ url_for('edit', element_type=element_type, element_id=element.id) }}">
+								<b>Edit</b>
+							</a>
+							|
+							<a href="{{ url_for('delete', element_type=element_type, element_id=element.id) }}">
+								<b>Delete</b>
+							</a>
+						</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+

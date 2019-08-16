@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Shopping Catalog</title>
+		<link rel="stylesheet" type="text/css" href="/css/custom.css" />
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<h1>Shopping Catalog</h1>
+				{% if is_authenticated %}
+					<a class="login_button" href="{{ url_for('logout') }}">Logout</a>
+				{% else %}
+					<a class="login_button" href="{{ url_for('login') }}">Login</a>
+				{% endif %}
+			</header>
+			<div class="main">
+				<div class="left-side">
+					<nav class="menu">
+						<div><p class="label">Categories</p></div>
+						<ul>
+							{% for category in categories %}
+								<li>
+									<a href="{{ url_for('items',  category_id=category.id) }}">
+										{{ category.title }}
+									</a>
+								</li>
+							{% endfor %}
+							{% if is_authenticated %}
+								<form action="#" method = 'post'>
+									<a href="{{ url_for('add',  element_type='category') }}"
+												type="submit" class="link">
+										<b>Add Category</b>
+									</a>
+								</form>
+							{% endif %}
+						</ul>
+					</nav>
+				</div>
+				<div class="right-side">
+					<nav class="menu ">
+						<div><p class="label">Latest Items</p></div>
+						<ul>
+							{% for item in latest_items %}
+								<li>
+									<a href="{{ url_for('detail',  element_type='item', element_id=item.id) }}">
+										{{ item.title }}
+									</a>
+									<i>({{ item.product_category.title }})</i>
+								</li>
+							{% endfor %}
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

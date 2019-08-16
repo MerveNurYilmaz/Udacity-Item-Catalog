@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Delete</title>
+		<link rel="stylesheet" type="text/css" href="/css/custom.css" />
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<h1>Shopping Catalog</h1>
+				<a class="login_button" href="{{ url_for('logout') }}">Logout</a>
+			</header>
+			<div class="main">
+				<div class="card">
+					<div class="card-header"><h1>Delete Element</h1></div>
+					<div class="card-body">
+                        <form action="#" method = 'post'>
+						    <h3>Are you sure you want to delete?</h3>
+                            <br><br>
+                            <div class="card-footer"><button type="submit">Submit</button></div>
+                        </form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
